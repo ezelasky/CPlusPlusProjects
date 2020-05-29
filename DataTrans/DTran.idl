@@ -1,0 +1,439 @@
+// DTran.idl : IDL source for DTran.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DTran.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+/*
+// {F7465B3E-D219-4f52-BA78-F93D625027EB}
+DEFINE_GUID(<<name>>, 
+0xf7465b3e, 0xd219, 0x4f52, 0xba, 0x78, 0xf9, 0x3d, 0x62, 0x50, 0x27, 0xeb);
+
+// {58105FCB-2420-421f-9275-90F73882E227}
+DEFINE_GUID(<<name>>, 
+0x58105fcb, 0x2420, 0x421f, 0x92, 0x75, 0x90, 0xf7, 0x38, 0x82, 0xe2, 0x27);
+
+// {36E99AAB-F130-4e51-A818-26B1E820B0A5}
+DEFINE_GUID(<<name>>, 
+0x36e99aab, 0xf130, 0x4e51, 0xa8, 0x18, 0x26, 0xb1, 0xe8, 0x20, 0xb0, 0xa5);
+
+// {894F0DB3-9968-4b81-B2C8-3054C1149AD6}
+DEFINE_GUID(<<name>>, 
+0x894f0db3, 0x9968, 0x4b81, 0xb2, 0xc8, 0x30, 0x54, 0xc1, 0x14, 0x9a, 0xd6);
+
+
+*/
+	typedef [uuid(F7465B3E-D219-4f52-BA78-F93D625027EB)]
+	enum{
+		vCREATE = 0,
+		vOVERWRITE,
+		vAPPEND,
+		vDROPADD
+	} DESTACTION;
+
+	typedef [uuid(AE5F66C0-9BC6-46f2-B0F8-E719B8849E2C)]
+	enum{
+		vBYREC = 0,
+		vBYFILE
+	} SPLITRULE;
+
+	typedef [uuid(58105FCB-2420-421f-9275-90F73882E227)]
+	enum{
+		vTNSFORMAT = 0,
+		vBCPFORMAT,
+		vDELIMFORMAT,
+		vCUSTFORMAT
+	} FORMATOPTION;
+
+	typedef [uuid(36E99AAB-F130-4e51-A818-26B1E820B0A5)]
+	enum{
+		vCORRECT = 0,
+		vOPTIMIZE
+	} RESIZEOPTION;
+
+	typedef [uuid(894F0DB3-9968-4b81-B2C8-3054C1149AD6)]  
+	enum{
+		vDBASE = 0,
+		vFOXPRO
+	} XBASETYPE;
+
+	typedef [uuid(F858AF45-B340-4478-AD1A-62441B15A740)]  
+	enum{
+		vBIGINT = 0,
+		vBINARY,
+		vBIT,
+		vCHAR,
+		vDATETIME,
+		vDECIMAL, 
+		vFLOAT,
+	//	vIMAGE,
+		vINT,
+		vMONEY,
+	//	vNCHAR,
+	//	vNTEXT,
+		vNUMERIC,
+	//	vNVARCHAR,
+		vREAL,
+		vSMALLDATETIME,
+		vSMALLINT,
+		vSMALLMONEY,
+	//	vSQLVARIANT,
+		vTEXT,
+		vTIMESTAMP,
+		vTINYINT,
+	//	vUNIQUEIDENTIFIER,
+		vVARCHAR
+	} FIELDTYPE;
+
+	[
+		object,
+		uuid(85697DBA-6336-4C66-A80A-01AE41F0D757),
+		dual,
+		helpstring("IFieldInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IFieldInfo : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		[propget, id(2), helpstring("property Type")] HRESULT Type([out, retval] FIELDTYPE *pVal);
+		[propput, id(2), helpstring("property Type")] HRESULT Type([in] FIELDTYPE newVal);
+		[propget, id(3), helpstring("property Length")] HRESULT Length([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property Length")] HRESULT Length([in] BSTR newVal);
+		[propget, id(4), helpstring("property Start")] HRESULT Start([out, retval] long *pVal);
+		[propput, id(4), helpstring("property Start")] HRESULT Start([in] long newVal);
+		[propget, id(5), helpstring("property End")] HRESULT End([out, retval] long *pVal);
+		[propput, id(5), helpstring("property End")] HRESULT End([in] long newVal);
+		[propget, id(6), helpstring("property Precision")] HRESULT Precision([out, retval] long *pVal);
+		[propput, id(6), helpstring("property Precision")] HRESULT Precision([in] long newVal);
+		[propget, id(7), helpstring("property Scale")] HRESULT Scale([out, retval] long *pVal);
+		[propput, id(7), helpstring("property Scale")] HRESULT Scale([in] long newVal);
+	};
+	[
+		object,
+		uuid(0A53F432-9E65-40BE-8C7A-DF0792D33FE1),
+		dual,
+		helpstring("IFormat Interface"),
+		pointer_default(unique)
+	]
+	interface IFormat : IDispatch
+	{
+		[propget, id(3), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+		[id(4), helpstring("method Load")] HRESULT Load([in] BSTR FormatFileName, [in] FORMATOPTION option, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(5), helpstring("method AddField")] HRESULT AddField([in] BSTR Name, [in] BSTR Length, [in] FIELDTYPE Type, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(6), helpstring("property FieldCount")] HRESULT FieldCount([out, retval] long *pVal);
+		[id(7), helpstring("method Clear")] HRESULT Clear();
+		[propget, id(8), helpstring("property FileName")] HRESULT FileName([out, retval] BSTR *pVal);
+		[propput, id(8), helpstring("property FileName")] HRESULT FileName([in] BSTR newVal);
+		[propget, id(9), helpstring("property Directory")] HRESULT Directory([out, retval] BSTR *pVal);
+		[propput, id(9), helpstring("property Directory")] HRESULT Directory([in] BSTR newVal);
+		[id(10), helpstring("method DeleteCurr")] HRESULT DeleteCurr([out, retval] VARIANT_BOOL* pRetVal);
+		[id(11), helpstring("method DeleteByName")] HRESULT DeleteByName([in] BSTR Name, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(12), helpstring("method DeleteByPos")] HRESULT DeleteByPos([in] long Position, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(13), helpstring("method First")] HRESULT First([out, retval] IFieldInfo** pObj);
+		[id(14), helpstring("method Next")] HRESULT Next([out, retval] IFieldInfo** pObj);
+		[id(15), helpstring("method Last")] HRESULT Last([out, retval] IFieldInfo** pObj);
+		[id(16), helpstring("method Prev")] HRESULT Prev([out, retval] IFieldInfo** pObj);
+		[id(17), helpstring("method GetByName")] HRESULT GetByName([in] BSTR Name, [out, retval] IFieldInfo** pObj);
+		[id(18), helpstring("method GetByPos")] HRESULT GetByPos([in] long Position, [out, retval] IFieldInfo** pObj);
+		[id(19), helpstring("method Write")] HRESULT Write([in] BSTR FileName, [in] FORMATOPTION option, [out,retval] VARIANT_BOOL* pRetVal);
+		[propget, id(20), helpstring("property BCPFormatFileLoc")] HRESULT BCPFormatFileLoc([out, retval] BSTR *pVal);
+		[propput, id(20), helpstring("property BCPFormatFileLoc")] HRESULT BCPFormatFileLoc([in] BSTR newVal);
+		[id(21), helpstring("method CopyFormat")] HRESULT CopyFormat([in] IFormat* pFormat, [out, retval] VARIANT_BOOL* bSuccess);
+		[id(22), helpstring("method AddFieldExt")] HRESULT AddFieldExt([in] BSTR Name, [in] BSTR Length, [in] FIELDTYPE Type, [in] long lStartPos, [in] long lEndPos, [in] long lPrecision, [in] long lScale, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(23), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[id(24), helpstring("method ValidFieldCollection")] HRESULT ValidFieldCollection([out, retval] VARIANT_BOOL* pRetVal);
+		[id(25), helpstring("method GetFirstError")] HRESULT GetFirstError([out] BSTR* pValOut, [out, retval] VARIANT_BOOL* pVal);
+		[id(26), helpstring("method GetNextError")] HRESULT GetNextError([out] BSTR* pValOut, [out, retval] VARIANT_BOOL* pVal);
+		[propget, id(27), helpstring("property RowDelim")] HRESULT RowDelim([out, retval] BSTR *pVal);
+		[propput, id(27), helpstring("property RowDelim")] HRESULT RowDelim([in] BSTR newVal);
+		[propget, id(28), helpstring("property FldDelim")] HRESULT FldDelim([out, retval] BSTR *pVal);
+		[propput, id(28), helpstring("property FldDelim")] HRESULT FldDelim([in] BSTR newVal);
+		[id(29), helpstring("method ReCalcLengths")] HRESULT ReCalcLengths([out, retval] VARIANT_BOOL* pRetVal);
+		[propput, id(30), helpstring("property CarRetInBCP")] HRESULT CarRetInBCP([in] VARIANT_BOOL newVal);
+		[id(31), helpstring("method RecordLength")] HRESULT RecordLength([out, retval] long *pVal);
+//		[propget, id(32), helpstring("property BCPDelim")] HRESULT BCPDelim([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(32), helpstring("property BCPDelim")] HRESULT BCPDelim([in] VARIANT_BOOL newVal);
+		[propget, id(33), helpstring("property TextQualifier")] HRESULT TextQualifier([out, retval] BSTR *pVal);
+		[propput, id(33), helpstring("property TextQualifier")] HRESULT TextQualifier([in] BSTR newVal);
+		[id(34), helpstring("method ReplaceColNames")] HRESULT ReplaceColNames([out,retval] VARIANT_BOOL* pRetVal);
+		[id(35), helpstring("method LoadCust")] HRESULT LoadCust([in] BSTR FormatFileName, [in] BSTR FormatSpec, [out,retval] VARIANT_BOOL* pRetVal);
+		[id(36), helpstring("method TotalFieldLength")] HRESULT TotalFieldLength([out, retval] long *pVal);
+	};
+	[
+		object,
+		uuid(4F35BB42-C24C-4F94-8B73-25F5DA9D0CE8),
+		dual,
+		helpstring("IdeSQL Interface"),
+		pointer_default(unique)
+	]
+	interface IdeSQL : IDispatch
+	{
+		[propget, id(1), helpstring("property Server")] HRESULT Server([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Server")] HRESULT Server([in] BSTR newVal);
+		[propget, id(2), helpstring("property Database")] HRESULT Database([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Database")] HRESULT Database([in] BSTR newVal);
+		[propget, id(3), helpstring("property Table")] HRESULT Table([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property Table")] HRESULT Table([in] BSTR newVal);
+		[propget, id(4), helpstring("property UserID")] HRESULT UserID([out, retval] BSTR *pVal);
+		[propput, id(4), helpstring("property UserID")] HRESULT UserID([in] BSTR newVal);
+		[propget, id(5), helpstring("property Password")] HRESULT Password([out, retval] BSTR *pVal);
+		[propput, id(5), helpstring("property Password")] HRESULT Password([in] BSTR newVal);
+		[propget, id(7), helpstring("property RowsLoaded")] HRESULT RowsLoaded([out, retval] long *pVal);
+		[propget, id(8), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+		[propput, id(9), helpstring("property Format")] HRESULT Format([in] IFormat* pObj);
+		[propget, id(9), helpstring("property Format")] HRESULT Format([out, retval] IFormat** pObj);
+		[id(11), helpstring("method Import")] HRESULT Import([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL* bRetVal);
+		[id(12), helpstring("method GetCreateTableSQL")] HRESULT GetCreateTableSQL([out, retval] BSTR* pRetVal);
+		[id(13), helpstring("method Export")] HRESULT Export([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *bRetVal);
+		[id(14), helpstring("method SetFormat")] HRESULT SetFormat([in] IFormat* pObj, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(15), helpstring("property TraceLogOn")] HRESULT TraceLogOn([out, retval] VARIANT_BOOL* pVal);
+		[propput, id(15), helpstring("property TraceLogOn")] HRESULT TraceLogOn([in] VARIANT_BOOL newVal);
+		[id(16), helpstring("method ImportMulti")] HRESULT ImportMulti([in] IDispatch* pIn, [in] DESTACTION action, [in] VARIANT_BOOL AddSource, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(17), helpstring("method ExportMulti")] HRESULT ExportMulti([in] IDispatch* pIn, [in] DESTACTION action, [in] SPLITRULE rule, [in] long lValue, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(18), helpstring("method Exists")] HRESULT Exists([out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(19), helpstring("property Version")] HRESULT Version([out, retval] BSTR *pVal);
+		[id(20), helpstring("method LoadFormat")] HRESULT LoadFormat([out, retval] VARIANT_BOOL* pRetVal);
+		[id(21), helpstring("method FieldResize")] HRESULT FieldResize([in] RESIZEOPTION option, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(22), helpstring("property ExportQuery")] HRESULT ExportQuery([out, retval] BSTR *pVal);
+		[propput, id(22), helpstring("property ExportQuery")] HRESULT ExportQuery([in] BSTR newVal);
+		[propget, id(23), helpstring("property Owner")] HRESULT Owner([out, retval] BSTR *pVal);
+		[propput, id(23), helpstring("property Owner")] HRESULT Owner([in] BSTR newVal);
+		[propget, id(24), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[propput, id(24), helpstring("property ErrMsgList")] HRESULT ErrMsgList([in] BSTR newVal);
+		[id(25), helpstring("method Query")] HRESULT Query([in] BSTR bstrQuery, [out, retval] IDispatch* *pRecSet);
+		[id(26), helpstring("method AddDatabase")] HRESULT AddDatabase([in] BSTR DataBase, [in] BSTR Path, [in] BSTR DatSize, [in] BSTR LogSize, [in] BSTR DatGrowth, [in] BSTR LogGrowth,  [in] BSTR DatMaxSize, [in] BSTR LogMaxSize,  [out, retval] VARIANT_BOOL *pRetVal);
+		[id(35), helpstring("method DatabaseExists")] HRESULT DatabaseExists([in] BSTR Server, [in] BSTR DataBase, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(36), helpstring("method Execute")] HRESULT Execute([in] BSTR Query, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(37), helpstring("property ImportBatchSize")] HRESULT ImportBatchSize([out, retval] long *pVal);
+		[propput, id(37), helpstring("property ImportBatchSize")] HRESULT ImportBatchSize([in] long newVal);
+		[propget, id(38), helpstring("property Err_MaxMessages")] HRESULT Err_MaxMessages([out, retval] long *pVal);
+		[propput, id(38), helpstring("property Err_MaxMessages")] HRESULT Err_MaxMessages([in] long newVal);
+		[propget, id(39), helpstring("property Err_NoInfo")] HRESULT Err_NoInfo([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(39), helpstring("property Err_NoInfo")] HRESULT Err_NoInfo([in] VARIANT_BOOL newVal);
+		[propget, id(40), helpstring("property ID_Name")] HRESULT ID_Name([out, retval] BSTR *pVal);
+		[propput, id(40), helpstring("property ID_Name")] HRESULT ID_Name([in] BSTR newVal);
+		[propget, id(41), helpstring("property ID_Definition")] HRESULT ID_Definition([out, retval] BSTR *pVal);
+		[propput, id(41), helpstring("property ID_Definition")] HRESULT ID_Definition([in] BSTR newVal);
+		[id(42), helpstring("method CreateTable")] HRESULT CreateTable([out, retval] VARIANT_BOOL* pRetVal);
+	};
+	[
+		object,
+		uuid(A28B384B-80DF-426F-8AAC-28AB9ED28F1F),
+		dual,
+		helpstring("IdeFixed Interface"),
+		pointer_default(unique)
+	]
+	interface IdeFixed : IDispatch
+	{
+		[propget, id(1), helpstring("property Directory")] HRESULT Directory([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Directory")] HRESULT Directory([in] BSTR newVal);
+		[propget, id(2), helpstring("property FileName")] HRESULT FileName([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property FileName")] HRESULT FileName([in] BSTR newVal);
+		[propget, id(3), helpstring("property RowsLoaded")] HRESULT RowsLoaded([out, retval] long *pVal);
+		[propget, id(4), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+		[id(7), helpstring("method Export")] HRESULT Export([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *pRetVal);
+		[id(8), helpstring("method Import")] HRESULT Import([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *pRetVal);
+		[id(9), helpstring("method SetFormat")] HRESULT SetFormat([in] IFormat* pObj, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(10), helpstring("property Format")] HRESULT Format([out, retval] IFormat* *pObj);
+		[propput, id(10), helpstring("property Format")] HRESULT Format([in] IFormat* pObj);
+		[propget, id(11), helpstring("property TraceLogOn")] HRESULT TraceLogOn([out, retval] VARIANT_BOOL* pVal);
+		[propput, id(11), helpstring("property TraceLogOn")] HRESULT TraceLogOn([in] VARIANT_BOOL newVal);
+		[id(12), helpstring("method Exists")] HRESULT Exists([out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(13), helpstring("property Version")] HRESULT Version([out, retval] BSTR *pVal);
+		[propget, id(14), helpstring("property FirstRow")] HRESULT FirstRow([out, retval] long *pVal);
+		[propput, id(14), helpstring("property FirstRow")] HRESULT FirstRow([in] long newVal);
+		[propget, id(15), helpstring("property LastRow")] HRESULT LastRow([out, retval] long *pVal);
+		[propput, id(15), helpstring("property LastRow")] HRESULT LastRow([in] long newVal);
+		[propget, id(16), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[id(17), helpstring("method LoadFormat")] HRESULT LoadFormat([out, retval] VARIANT_BOOL* pRetVal);
+		[id(18), helpstring("method ValidateFile")] HRESULT ValidateFile([in] BSTR FileName, [in] long TestRecNum, [in] long MaxErrors, [out, retval] VARIANT_BOOL* pRetVal);
+	};
+
+	[
+		object,
+		uuid(2E7A8FCB-DACB-4F5C-B2F8-055EF8268E05),
+		dual,
+		helpstring("IdeDelim Interface"),
+		pointer_default(unique)
+	]
+	interface IdeDelim : IDispatch
+	{
+		[propget, id(1), helpstring("property Directory")] HRESULT Directory([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Directory")] HRESULT Directory([in] BSTR newVal);
+		[propget, id(2), helpstring("property FileName")] HRESULT FileName([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property FileName")] HRESULT FileName([in] BSTR newVal);
+		[propget, id(3), helpstring("property RowsLoaded")] HRESULT RowsLoaded([out, retval] long *pVal);
+		[propget, id(4), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+		[id(7), helpstring("method Export")] HRESULT Export([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *pRetVal);
+		[id(8), helpstring("method Import")] HRESULT Import([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *pRetVal);
+		[id(9), helpstring("method SetFormat")] HRESULT SetFormat([in] IFormat* pObj, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(10), helpstring("property Format")] HRESULT Format([out, retval] IFormat* *pObj);
+		[propput, id(10), helpstring("property Format")] HRESULT Format([in] IFormat* pObj);
+		[propget, id(11), helpstring("property TraceLogOn")] HRESULT TraceLogOn([out, retval] VARIANT_BOOL* pVal);
+		[propput, id(11), helpstring("property TraceLogOn")] HRESULT TraceLogOn([in] VARIANT_BOOL newVal);
+		[id(12), helpstring("method Exists")] HRESULT Exists([out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(13), helpstring("property Version")] HRESULT Version([out, retval] BSTR *pVal);
+		[propget, id(14), helpstring("property FirstRow")] HRESULT FirstRow([out, retval] long *pVal);
+		[propput, id(14), helpstring("property FirstRow")] HRESULT FirstRow([in] long newVal);
+		[propget, id(15), helpstring("property LastRow")] HRESULT LastRow([out, retval] long *pVal);
+		[propput, id(15), helpstring("property LastRow")] HRESULT LastRow([in] long newVal);
+		[propget, id(16), helpstring("property Delimiter")] HRESULT Delimiter([out, retval] BSTR *pVal);
+		[propput, id(16), helpstring("property Delimiter")] HRESULT Delimiter([in] BSTR newVal);
+		[propget, id(17), helpstring("property TextQualifier")] HRESULT TextQualifier([out, retval] BSTR *pVal);
+		[propput, id(17), helpstring("property TextQualifier")] HRESULT TextQualifier([in] BSTR newVal);
+		[propget, id(18), helpstring("property Header")] HRESULT Header([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(18), helpstring("property Header")] HRESULT Header([in] VARIANT_BOOL newVal);
+		[propget, id(19), helpstring("property RowDelimiter")] HRESULT RowDelimiter([out, retval] BSTR *pVal);
+		[propput, id(19), helpstring("property RowDelimiter")] HRESULT RowDelimiter([in] BSTR newVal);
+		[propget, id(20), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[id(21), helpstring("method LoadFormat")] HRESULT LoadFormat([out, retval] VARIANT_BOOL* pRetVal);
+		[id(22), helpstring("method ValidateFile")] HRESULT ValidateFile([in] BSTR FileName, [in] long TestRecNum, [in] long MaxErrors, [out, retval] VARIANT_BOOL* pRetVal);
+	};
+	[
+		object,
+		uuid(BADC7E4E-93F6-43DD-8FD7-C0F0EBA54F4C),
+		dual,
+		helpstring("IdeXBase Interface"),
+		pointer_default(unique)
+	]
+	interface IdeXBase : IDispatch
+	{
+		[propget, id(1), helpstring("property Directory")] HRESULT Directory([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Directory")] HRESULT Directory([in] BSTR newVal);
+		[propget, id(2), helpstring("property Table")] HRESULT Table([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Table")] HRESULT Table([in] BSTR newVal);
+		[propget, id(3), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[propget, id(4), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+		[propget, id(5), helpstring("property RowsLoaded")] HRESULT RowsLoaded([out, retval] long *pVal);
+		[propget, id(6), helpstring("property TraceLogOn")] HRESULT TraceLogOn([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(6), helpstring("property TraceLogOn")] HRESULT TraceLogOn([in] VARIANT_BOOL newVal);
+		[propget, id(7), helpstring("property Version")] HRESULT Version([out, retval] BSTR *pVal);
+		[id(8), helpstring("method Export")] HRESULT Export([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *bRetVal);
+		[id(9), helpstring("method Import")] HRESULT Import([in] IDispatch* pIn, [in] DESTACTION action, [out, retval] VARIANT_BOOL *bRetVal);
+		[id(10), helpstring("method Exists")] HRESULT Exists([out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(11), helpstring("property FirstRow")] HRESULT FirstRow([out, retval] long *pVal);
+		[propput, id(11), helpstring("property FirstRow")] HRESULT FirstRow([in] long newVal);
+		[propget, id(12), helpstring("property LastRow")] HRESULT LastRow([out, retval] long *pVal);
+		[propput, id(12), helpstring("property LastRow")] HRESULT LastRow([in] long newVal);
+		[propput, id(13), helpstring("property Format")] HRESULT Format([in] IFormat* pObj);
+		[propget, id(13), helpstring("property Format")] HRESULT Format([out, retval] IFormat** pObj);
+	//	[propget, id(14), helpstring("property TraceOn")] HRESULT TraceOn([out, retval] VARIANT_BOOL *pVal);
+	//	[propput, id(14), helpstring("property TraceOn")] HRESULT TraceOn([in] VARIANT_BOOL newVal);
+		[propget, id(15), helpstring("property TableType")] HRESULT TableType([out, retval] XBASETYPE *pVal);
+		[propput, id(15), helpstring("property TableType")] HRESULT TableType([in] XBASETYPE newVal);
+		[id(16), helpstring("method LoadFormat")] HRESULT LoadFormat([out, retval] VARIANT_BOOL *pRetVal);
+
+	};
+
+	[
+		object,
+		uuid(1DD63CF9-FAA9-4429-BB2B-B244ABB4A055),
+		dual,
+		helpstring("IProcess Interface"),
+		pointer_default(unique)
+	]
+	interface IProcess : IDispatch
+	{
+		[id(1), helpstring("method IsSQLObject")] HRESULT IsSQLObject([in] IDispatch* pIDisp, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(2), helpstring("method IsFixedFileObject")] HRESULT IsFixedFileObject([in] IDispatch *pIDisp, [out, retval] VARIANT_BOOL *pRetVal);
+		[id(3), helpstring("method FixedToSQL")] HRESULT FixedToSQL([in] IdeFixed* pFixed , [in] IdeSQL* pSQL, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(5), helpstring("method SQLToFixed")] HRESULT SQLToFixed([in]IdeSQL *pSQL, [in]IdeFixed *pFixed, [in] long lChunk, [in] long lFileNum,  [out, retval] VARIANT_BOOL *pRetVal);
+		[propget, id(6), helpstring("property ErrMsgs")] HRESULT ErrMsgs([out, retval] BSTR *pVal);
+	//	[propput, id(6), helpstring("property ErrMsgs")] HRESULT ErrMsgs([in] BSTR newVal);
+		[propget, id(7), helpstring("property RowsLoaded")] HRESULT RowsLoaded([out, retval] long *pVal);
+		[propput, id(7), helpstring("property RowsLoaded")] HRESULT RowsLoaded([in] long newVal);
+		[propget, id(8), helpstring("property TraceLogOn")] HRESULT TraceLogOn([out, retval] VARIANT_BOOL* pVal);
+		[propput, id(8), helpstring("property TraceLogOn")] HRESULT TraceLogOn([in] VARIANT_BOOL newVal);
+		[propget, id(9), helpstring("property TraceFileName")] HRESULT TraceFileName([out, retval] BSTR *pVal);
+		[propput, id(9), helpstring("property TraceFileName")] HRESULT TraceFileName([in] BSTR newVal);
+		[id(10), helpstring("method MultiImportToSQL")] HRESULT MultiImportToSQL([in] IDispatch* pDisp , [in] IdeSQL* pSQL, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(11), helpstring("property Action")] HRESULT Action([out, retval] DESTACTION *pVal);
+		[propput, id(11), helpstring("property Action")] HRESULT Action([in] DESTACTION newVal);
+		[id(12), helpstring("method DelimToSQL")] HRESULT DelimToSQL([in] IdeDelim* pDelim, [in] IdeSQL* pSQL, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(13), helpstring("method IsDelimFileObject")] HRESULT IsDelimFileObject([in] IDispatch* pIDisp, [out, retval] VARIANT_BOOL* pRetVal);
+		[propget, id(14), helpstring("property ErrMsgList")] HRESULT ErrMsgList([out, retval] BSTR *pVal);
+		[id(15), helpstring("method GetFirstError")] HRESULT GetFirstError([out] BSTR* pValOut, [out, retval] VARIANT_BOOL* pVal);
+		[id(16), helpstring("method GetNextError")] HRESULT GetNextError([out] BSTR* pValOut, [out, retval] VARIANT_BOOL* pVal);
+		[propget, id(17), helpstring("property AddSource")] HRESULT AddSource([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(17), helpstring("property AddSource")] HRESULT AddSource([in] VARIANT_BOOL newVal);
+		[id(18), helpstring("method XBaseToSQL")] HRESULT XBaseToSQL([in] IdeXBase* pXBase, [in] IdeSQL* pSQL, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(19), helpstring("method IsXBaseObject")] HRESULT IsXBaseObject([in] IDispatch* pIDisp, [out, retval] VARIANT_BOOL* pRetVal);
+		[id(20), helpstring("method SQLToXBase")] HRESULT SQLToXBase([in] IdeSQL* pSQL, [in] IdeXBase* pXBase,  [out, retval] VARIANT_BOOL* pRetVal);
+		[id(21), helpstring("method SQLToDelim")] HRESULT SQLToDelim([in] IdeSQL* pSQL, [in] IdeDelim* pDelim,  [out, retval] VARIANT_BOOL* pRetVal);
+
+//		[propget, id(12), helpstring("property TruncationOccurred")] HRESULT TruncationOccurred([out, retval] VARIANT_BOOL *pRetVal);
+
+
+	};
+
+[
+	uuid(A0FA8356-2866-4D57-84A2-8E3BB72C249C),
+	version(1.0),
+	helpstring("DTran 1.0 Type Library")
+]
+library DTRANLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(6259AC5E-86D3-493B-A219-FE93E4C924BC),
+		helpstring("FieldInfo Class")
+	]
+	coclass FieldInfo
+	{
+		[default] interface IFieldInfo;
+	};
+	[
+		uuid(39908C62-33A1-4438-99D5-580979DE776B),
+		helpstring("Format Class")
+	]
+	coclass Format
+	{
+		[default] interface IFormat;
+	};
+	[
+		uuid(1AD87362-7E27-4161-A019-F2515B843D52),
+		helpstring("deSQL Class")
+	]
+	coclass deSQL
+	{
+		[default] interface IdeSQL;
+	};
+	[
+		uuid(DFC263FC-0B43-4E9A-95CA-8EDCE8F364C8),
+		helpstring("deFixed Class")
+	]
+	coclass deFixed
+	{
+		[default] interface IdeFixed;
+	};
+	[
+		uuid(A6D65811-5FBE-4B80-8D81-966046F7341C),
+		helpstring("Process Class")
+	]
+	coclass Process
+	{
+		[default] interface IProcess;
+	};
+	[
+		uuid(E600509E-7519-4ACB-BF32-FF9A4C2280FC),
+		helpstring("deDelim Class")
+	]
+	coclass deDelim
+	{
+		[default] interface IdeDelim;
+	};
+	[
+		uuid(C65415AF-3504-41C8-9A5E-A8EF72041E76),
+		helpstring("deXBase Class")
+	]
+	coclass deXBase
+	{
+		[default] interface IdeXBase;
+	};
+};

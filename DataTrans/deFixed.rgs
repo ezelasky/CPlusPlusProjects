@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.deFixed.1 = s 'deFixed Class'
+	{
+		CLSID = s '{DFC263FC-0B43-4E9A-95CA-8EDCE8F364C8}'
+	}
+	DTran.deFixed = s 'deFixed Class'
+	{
+		CLSID = s '{DFC263FC-0B43-4E9A-95CA-8EDCE8F364C8}'
+		CurVer = s 'DTran.deFixed.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DFC263FC-0B43-4E9A-95CA-8EDCE8F364C8} = s 'deFixed Class'
+		{
+			ProgID = s 'DTran.deFixed.1'
+			VersionIndependentProgID = s 'DTran.deFixed'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

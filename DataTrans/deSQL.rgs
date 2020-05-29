@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.deSQL.1 = s 'deSQL Class'
+	{
+		CLSID = s '{1AD87362-7E27-4161-A019-F2515B843D52}'
+	}
+	DTran.deSQL = s 'deSQL Class'
+	{
+		CLSID = s '{1AD87362-7E27-4161-A019-F2515B843D52}'
+		CurVer = s 'DTran.deSQL.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1AD87362-7E27-4161-A019-F2515B843D52} = s 'deSQL Class'
+		{
+			ProgID = s 'DTran.deSQL.1'
+			VersionIndependentProgID = s 'DTran.deSQL'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

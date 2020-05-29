@@ -1,0 +1,11 @@
+
+ Data File Name: C:\projects\Transfer Tool\Regression\input\test_out_errors.txt 
+DTRAN ERROR - validation error: Format Object total field count: 9 does not match record #: 2   count: 8.
+"001-77-7777","Smith","Chris","5","27 College Ave","CO","90220","1"
+"002-88-8888","Doe","John","5","123 Maple Street","Seattle","WA","95099","0"
+
+DTRAN ERROR - validation error: Format Object total field count: 9 does not match record #: 4   count: 5.
+"002-88-8888","Doe","John","5","123 Maple Street","Seattle","WA","95099","0"
+"003-77-7777","Smith","Chris","27 College Ave","Denver"
+
+Total records with validation errors: 2. Number of records evaluated: 5

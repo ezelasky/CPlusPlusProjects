@@ -1,0 +1,15 @@
+Format Object total field count: 9 does not match record #: 2   count: 8.
+"001-77-7777","Smith","Chris","5","27 College Ave","CO","90220","1"
+"002-88-8888","Doe","John","5","123 Maple Street","Seattle","WA","95099","0"
+
+Format Object total field count: 9 does not match record #: 4   count: 5.
+"002-88-8888","Doe","John","5","123 Maple Street","Seattle","WA","95099","0"
+"003-77-7777","Smith","Chris","27 College Ave","Denver"
+"004-77-7777","Smith","Chris","5","27 College Ave","Denver","CO","90220","1"
+
+Format Object total field count: 9 does not match record #: 7   count: 8.
+"005-88-8888","Doe","John","5","123 Maple Street","Seattle","WA","95099","0"
+"006-77-7777","Chris","5","27 College Ave","Denver","CO","90220","1"
+
+
+ Total records with validation errors: 3.

@@ -1,0 +1,32 @@
+
+ ************************ Multifile Validation ************************ 
+ Data File Name: C:\projects\Transfer Tool\Tests\ValidateFile functionality\fixed\Authors3.txt 
+
+ *** No errors found. *** 
+
+ Data File Name: C:\projects\Transfer Tool\Tests\ValidateFile functionality\fixed\Authors3_errors.txt 
+DTRAN ERROR - Validation Error: Format Object total field length: 151 does not match record #: 4   length: 137.
+003-99-9999Door                                    Jane                406 555-123445 East Main                            Bozeman             MT597151
+004-77-7777Smith                                   Chris               College Ave                          Denver              CO802201
+005-88-8888Doe                                     John                206 555-1214123 Maple Street                        Seattle             WA950990
+
+DTRAN ERROR - Validation Error: Format Object total field length: 151 does not match record #: 7   length: 132.
+006-99-9999Door                                    Jane                406 555-123445 East Main                            Bozeman             MT597151
+007-77-7777Smith                                   303 555-121327 College Ave                          Denver              CO802201
+008-88-8888Doe                                     John                206 555-1214123 Maple Street                        Seattle             WA950990
+
+
+Total records with validation errors: 2. Number of records evaluated: 38
+
+ Data File Name: C:\projects\Transfer Tool\Tests\ValidateFile functionality\fixed\Authors3_errors1.txt 
+DTRAN ERROR - Validation Error: Format Object total field length: 151 does not match record #: 25   length: 52.
+999-99-9999Door                                    Jane                406 555-123445 East Main                            Bozeman             MT597151
+777-77-7777Smith                                   
+888-88-8888Doe                                     John                206 555-1214123 Maple Street                        Seattle             WA950990
+
+
+Total records with validation errors: 1. Number of records evaluated: 38
+
+ Data File Name: C:\projects\Transfer Tool\Tests\ValidateFile functionality\fixed\Authors3_short.txt 
+
+ *** No errors found. *** 

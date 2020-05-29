@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.deXBase.1 = s 'deXBase Class'
+	{
+		CLSID = s '{C65415AF-3504-41C8-9A5E-A8EF72041E76}'
+	}
+	DTran.deXBase = s 'deXBase Class'
+	{
+		CLSID = s '{C65415AF-3504-41C8-9A5E-A8EF72041E76}'
+		CurVer = s 'DTran.deXBase.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C65415AF-3504-41C8-9A5E-A8EF72041E76} = s 'deXBase Class'
+		{
+			ProgID = s 'DTran.deXBase.1'
+			VersionIndependentProgID = s 'DTran.deXBase'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

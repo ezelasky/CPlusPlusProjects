@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DTran", "DTran.vcproj", "{A45C4472-725B-4277-8776-16212E306F94}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {357E49F1-E189-44E9-89BD-2A35FAAFA6C1}
+		SccProjectUniqueName1 = DTran.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release MinDependency = Release MinDependency
+		Release MinSize = Release MinSize
+		Unicode Debug = Unicode Debug
+		Unicode Release MinDependency = Unicode Release MinDependency
+		Unicode Release MinSize = Unicode Release MinSize
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A45C4472-725B-4277-8776-16212E306F94}.Debug.ActiveCfg = Debug|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Debug.Build.0 = Debug|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release.ActiveCfg = Release MinSize|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release.Build.0 = Release MinSize|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release MinDependency.ActiveCfg = Release MinDependency|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release MinDependency.Build.0 = Release MinDependency|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release MinSize.ActiveCfg = Release MinSize|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Release MinSize.Build.0 = Release MinSize|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Debug.ActiveCfg = Unicode Debug|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Debug.Build.0 = Unicode Debug|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Release MinDependency.ActiveCfg = Unicode Release MinDependency|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Release MinDependency.Build.0 = Unicode Release MinDependency|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Release MinSize.ActiveCfg = Unicode Release MinSize|Win32
+		{A45C4472-725B-4277-8776-16212E306F94}.Unicode Release MinSize.Build.0 = Unicode Release MinSize|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

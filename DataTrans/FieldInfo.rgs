@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.FieldInfo.1 = s 'FieldInfo Class'
+	{
+		CLSID = s '{6259AC5E-86D3-493B-A219-FE93E4C924BC}'
+	}
+	DTran.FieldInfo = s 'FieldInfo Class'
+	{
+		CLSID = s '{6259AC5E-86D3-493B-A219-FE93E4C924BC}'
+		CurVer = s 'DTran.FieldInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6259AC5E-86D3-493B-A219-FE93E4C924BC} = s 'FieldInfo Class'
+		{
+			ProgID = s 'DTran.FieldInfo.1'
+			VersionIndependentProgID = s 'DTran.FieldInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

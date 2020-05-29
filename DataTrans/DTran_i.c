@@ -1,0 +1,126 @@
+
+
+/* this ALWAYS GENERATED file contains the IIDs and CLSIDs */
+
+/* link this file in with the server and any clients */
+
+
+ /* File created by MIDL compiler version 6.00.0361 */
+/* at Fri Mar 17 14:16:40 2006
+ */
+/* Compiler settings for .\DTran.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/
+//@@MIDL_FILE_HEADING(  )
+
+#if !defined(_M_IA64) && !defined(_M_AMD64)
+
+
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
+
+
+#ifdef __cplusplus
+extern "C"{
+#endif 
+
+
+#include <rpc.h>
+#include <rpcndr.h>
+
+#ifdef _MIDL_USE_GUIDDEF_
+
+#ifndef INITGUID
+#define INITGUID
+#include <guiddef.h>
+#undef INITGUID
+#else
+#include <guiddef.h>
+#endif
+
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8)
+
+#else // !_MIDL_USE_GUIDDEF_
+
+#ifndef __IID_DEFINED__
+#define __IID_DEFINED__
+
+typedef struct _IID
+{
+    unsigned long x;
+    unsigned short s1;
+    unsigned short s2;
+    unsigned char  c[8];
+} IID;
+
+#endif // __IID_DEFINED__
+
+#ifndef CLSID_DEFINED
+#define CLSID_DEFINED
+typedef IID CLSID;
+#endif // CLSID_DEFINED
+
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        const type name = {l,w1,w2,{b1,b2,b3,b4,b5,b6,b7,b8}}
+
+#endif !_MIDL_USE_GUIDDEF_
+
+MIDL_DEFINE_GUID(IID, IID_IFieldInfo,0x85697DBA,0x6336,0x4C66,0xA8,0x0A,0x01,0xAE,0x41,0xF0,0xD7,0x57);
+
+
+MIDL_DEFINE_GUID(IID, IID_IFormat,0x0A53F432,0x9E65,0x40BE,0x8C,0x7A,0xDF,0x07,0x92,0xD3,0x3F,0xE1);
+
+
+MIDL_DEFINE_GUID(IID, IID_IdeSQL,0x4F35BB42,0xC24C,0x4F94,0x8B,0x73,0x25,0xF5,0xDA,0x9D,0x0C,0xE8);
+
+
+MIDL_DEFINE_GUID(IID, IID_IdeFixed,0xA28B384B,0x80DF,0x426F,0x8A,0xAC,0x28,0xAB,0x9E,0xD2,0x8F,0x1F);
+
+
+MIDL_DEFINE_GUID(IID, IID_IdeDelim,0x2E7A8FCB,0xDACB,0x4F5C,0xB2,0xF8,0x05,0x5E,0xF8,0x26,0x8E,0x05);
+
+
+MIDL_DEFINE_GUID(IID, IID_IdeXBase,0xBADC7E4E,0x93F6,0x43DD,0x8F,0xD7,0xC0,0xF0,0xEB,0xA5,0x4F,0x4C);
+
+
+MIDL_DEFINE_GUID(IID, IID_IProcess,0x1DD63CF9,0xFAA9,0x4429,0xBB,0x2B,0xB2,0x44,0xAB,0xB4,0xA0,0x55);
+
+
+MIDL_DEFINE_GUID(IID, LIBID_DTRANLib,0xA0FA8356,0x2866,0x4D57,0x84,0xA2,0x8E,0x3B,0xB7,0x2C,0x24,0x9C);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_FieldInfo,0x6259AC5E,0x86D3,0x493B,0xA2,0x19,0xFE,0x93,0xE4,0xC9,0x24,0xBC);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_Format,0x39908C62,0x33A1,0x4438,0x99,0xD5,0x58,0x09,0x79,0xDE,0x77,0x6B);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_deSQL,0x1AD87362,0x7E27,0x4161,0xA0,0x19,0xF2,0x51,0x5B,0x84,0x3D,0x52);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_deFixed,0xDFC263FC,0x0B43,0x4E9A,0x95,0xCA,0x8E,0xDC,0xE8,0xF3,0x64,0xC8);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_Process,0xA6D65811,0x5FBE,0x4B80,0x8D,0x81,0x96,0x60,0x46,0xF7,0x34,0x1C);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_deDelim,0xE600509E,0x7519,0x4ACB,0xBF,0x32,0xFF,0x9A,0x4C,0x22,0x80,0xFC);
+
+
+MIDL_DEFINE_GUID(CLSID, CLSID_deXBase,0xC65415AF,0x3504,0x41C8,0x9A,0x5E,0xA8,0xEF,0x72,0x04,0x1E,0x76);
+
+#undef MIDL_DEFINE_GUID
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
+#endif /* !defined(_M_IA64) && !defined(_M_AMD64)*/
+

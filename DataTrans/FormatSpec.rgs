@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.FormatSpec.1 = s 'FormatSpec Class'
+	{
+		CLSID = s '{F28322AD-F46C-4205-BB1C-0A44FB1F1C60}'
+	}
+	DTran.FormatSpec = s 'FormatSpec Class'
+	{
+		CLSID = s '{F28322AD-F46C-4205-BB1C-0A44FB1F1C60}'
+		CurVer = s 'DTran.FormatSpec.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F28322AD-F46C-4205-BB1C-0A44FB1F1C60} = s 'FormatSpec Class'
+		{
+			ProgID = s 'DTran.FormatSpec.1'
+			VersionIndependentProgID = s 'DTran.FormatSpec'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

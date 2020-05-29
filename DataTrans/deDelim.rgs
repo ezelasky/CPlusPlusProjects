@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.deDelim.1 = s 'deDelim Class'
+	{
+		CLSID = s '{E600509E-7519-4ACB-BF32-FF9A4C2280FC}'
+	}
+	DTran.deDelim = s 'deDelim Class'
+	{
+		CLSID = s '{E600509E-7519-4ACB-BF32-FF9A4C2280FC}'
+		CurVer = s 'DTran.deDelim.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E600509E-7519-4ACB-BF32-FF9A4C2280FC} = s 'deDelim Class'
+		{
+			ProgID = s 'DTran.deDelim.1'
+			VersionIndependentProgID = s 'DTran.deDelim'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}

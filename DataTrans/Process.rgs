@@ -1,0 +1,26 @@
+HKCR
+{
+	DTran.Process.1 = s 'Process Class'
+	{
+		CLSID = s '{A6D65811-5FBE-4B80-8D81-966046F7341C}'
+	}
+	DTran.Process = s 'Process Class'
+	{
+		CLSID = s '{A6D65811-5FBE-4B80-8D81-966046F7341C}'
+		CurVer = s 'DTran.Process.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A6D65811-5FBE-4B80-8D81-966046F7341C} = s 'Process Class'
+		{
+			ProgID = s 'DTran.Process.1'
+			VersionIndependentProgID = s 'DTran.Process'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A0FA8356-2866-4D57-84A2-8E3BB72C249C}'
+		}
+	}
+}
